@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steffi Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    * { scroll-behavior: smooth; }
+    body {
+        background-color: #f7fafc;
+        color: #2d3748;
+        font-family:poppins;
+    
+     }     
+
+    nav {
+      background: #0d9488;
+    }
+    nav .nav-link {
+      color: #ffffff !important;
+      font-weight: 500;
+    }
+    header.hero {
+        position: relative;
+        background:url('https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=1600&q=80') no-repeat center calc(50% - 50px)/cover;
+        color: #111;
+        padding: 250px 0;
+        text-align:center;
+        z-index: 1;
+    }
+    .hero::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(255, 255, 255, 0.5);  
+        backdrop-filter: blur(4px);          
+        z-index: -1;
+    }
+    header.hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    header.hero p {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+    @keyframes slideFadeIn 
+    {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+       }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .hero h1,.hero p,.hero .btn {
+        opacity: 0;
+        animation: slideFadeIn 1s ease-out forwards;
+    }
+    .btn-custom {
+      background-color: #0d9488;
+      color: #fff;
+      border-radius: 50px;
+      padding: 10px 25px;
+    }
+    .section {
+      padding: 60px 0;
+    }
+
+    /*---- About Section -- */
+    .about{
+       max-width: 950px;
+       margin: 40px auto;
+       padding: 50px;
+       background-color: #fcfcfc;
+       box-shadow:3px 3px 3px 3px rgba(0, 0, 0, 0.589);
+       transition: all 0.3s ease;
+    }
+
+    .about:hover {
+       transform: translateY(-5px);
+       box-shadow: 0 12px 30px rgba(184, 173, 173, 0.15);
+    }
+
+    .about h1 {
+       font-size: 2.5rem;
+       margin-bottom: 0px;
+       color: #1f2937;
+    }
+
+    .about p {
+       font-size: 1.1rem;
+       line-height: 1.7;
+       color: #4b5563;
+    }
+
+    .highlight {
+       color: #10b981; 
+       font-weight: bold;
+    }
+
+  /*-- EDUCATION SECTION--*/
+  .education-section {
+  padding: 80px 10px 150px 10px;
+  background: linear-gradient(to right, #f3d5f1, #d6f2f3);
+  text-align: center;
+}
+
+.section-title {
+  font-size: 35px;
+  color: #1e3a8a;
+  margin-bottom: 50px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  justify-content: center;
+}
+
+.edu-card {
+  background-color:#ffffff;
+  border-radius: 16px;
+  padding: 20px 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-top: 6px solid #2563eb;
+  position: relative;
+}
+
+.edu-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.edu-icon {
+  font-size: 36px;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.edu-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1e40af;
+}
+
+.edu-school {
+  font-size: 20px;
+  font-weight:400px;
+  color: #4b5563;
+  margin-bottom: 5px;
+}
+
+.edu-year,.edu-percent {
+  font-size: 19px;
+  color: #6b7280;
+}
+
+  /*--- PROJECT --- */
+     .card {
+      border: none;
+      padding:20px;
+      margin:10px;
+      box-shadow: 0 4px 12px rgba(98, 197, 214, 0.911);
+    }
+
+    #projects h5{
+       text-align: center;
+       font-family:sans-serif Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      transition: 0.3s ease;
+    }
+      
+
+    /* -- skills section --*/
+#skills { 
+  padding: 80px 0 20px 0;
+}
+
+#skills .row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+#skills .col-md-12 {
+  margin-bottom: 50px;
+}
+
+#skills img {
+  max-width: 40px;
+  margin-bottom: 10px;
+  
+}
+
+#skills p {
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  color: #2d3748;
+  
+}
+
+
+/*-- Activities--*/
+#activities {
+  background: linear-gradient(135deg, #e0f7fa, #f1faff);
+  padding: 60px 20px;
+}
+
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  padding-left: 20px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 35px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #38bdf8;
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 40px;
+  position: relative;
+  align-items: flex-start;
+}
+
+.timeline-icon {
+  width: 70px;
+  height: 70px;
+  background-color: #0ea5e9;
+  color: #fff;
+  font-size: 2rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 70px;
+  position: relative;
+  z-index: 1;
+  margin-right: 30px;
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.2);
+}
+
+.timeline-content {
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-content h3 {
+  font-size: 1.5rem;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.timeline-content p {
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+  .timeline {
+    padding-left: 0;
+  }
+
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .timeline-icon {
+    margin: 0 auto 20px;
+  }
+}
+
+/*--- Certifications--*/ 
+#certifications {
+  background: linear-gradient(to bottom right, #f1f5f9, #dbeafe);
+  padding: 80px 0 100px 0;
+}
+
+.cert-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.cert-card {
+  background-color: #ffffff;
+  padding: 30px 25px;
+  width: 300px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #e77fdf;
+  outline-offset: -8px;
+
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 123, 255, 0.15);
+}
+
+.cert-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+.cert-card p {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+.badge {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2563eb;
+  color: white;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .cert-card {
+    width: 100%;
+    border: #e90ede;
+  }
+}
+
+/*-- Personal Details-- */
+
+#personal-details {
+  padding: 90px;
+  max-width: 600px;
+  margin:auto;
+  
+}
+
+#personal-details h3{
+  font-style:Arial ;
+  font-size:1.5rem;
+  font-size: 30px;
+  text-decoration:underline #0db9fd 3px;
+  text-align: center;
+
+}
+.personal-list {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+  font-size: 1rem;
+  color: #374151;
+}
+.personal-list li {
+  margin-bottom: 10px;
+}
+
+  /*-- Footer with contact info --*/
+  footer {
+  background: #26525f;
+  padding: 90px;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  margin:20px 0 0 0;
+  font-size:18px;
+}
+
+.rights-reserved {
+  margin: 0;
+  padding: 15px 10px;
+  background-color: #26525f;
+  color: white;
+  text-align: center;
+}
+
+  </style>
+  
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-white fw-bold" href="#">Steffi Portfolio</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#Home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#personal-details">Details</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>   
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>Hello, I'm <strong>Steffi Grace M</strong></h1>
+      <p>Full Stack Developer | Web Enthusiast</p>
+      <a href="#contact" class="btn btn-custom">Let’s Connect</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container about">
+      <h4 class="section-title">About Me</h4>
+     <p>
+      Aspiring <span class="highlight">Full Stack .NET Developer</span> with hands-on training .Passionate about building responsive web apps using 
+      modern technologies like <span class="highlight">C# , ASP.NET  and<br> SQL Server</span>. I'm eager to contribute 
+      and grow in a dynamic team environment.
+     </p>
+     <a href="resume.pdf" class="btn-resume" download>
+      📄 Download My Resume
+    </a>
+  </div>  
+
+  
+  <!-- Education section -->
+  <section id="education" class="education-section">
+    <div class="container">
+      <h2 class="section-title">🎓 My Education</h2>
+      <div class="education-grid">
+  
+        <div class="edu-card">
+          <div class="edu-icon">📘</div>
+          <h3 class="edu-title">SSLC</h3>
+          <p class="edu-school"><b>Shri Anand Jain Vidyalaya Hr. Sec. School</b></p>
+          <p class="edu-year">2016 – 2017</p>
+          <p class="edu-percent">90%</p>
+        </div>
+  
+        <div class="edu-card">
+          <div class="edu-icon">💻</div>
+          <h3 class="edu-title">HSC</h3>
+          <p class="edu-school"><b>Zion Matriculation Hr. Sec. School</b></p>
+          <p class="edu-year">2018 – 2019</p>
+          <p class="edu-percent">Computer Science <br>74.3%</p>
+        </div>
+  
+        <div class="edu-card">
+          <div class="edu-icon">🎓</div>
+          <h3 class="edu-title">B.E</h3>
+          <p class="edu-school"><b>Sri Sairam Institute of Technology</b></Sri></p>
+          <p class="edu-year">2019 – 2023</p>
+          <p class="edu-percent">Electronics & Communication <br>77.5%</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Projects Section -->
+  <section id="projects" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="port.jpg" class="card-img-top" alt="Project 1">
+            <div class="card-body">
+              <h5 class="card-title"><b>Portfolio Website</b></h5>
+              <p class="card-text">Responsive personal site , built using HTML, CSS, Bootstrap, and JavaScript.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="book.jpg" class="card-img-top" alt="Project 2">
+            <div class="card-body">
+              <h5 class="card-title"><b>Books Management System</b></h5>
+              <p class="card-text">CRUD app using ASP.NET and MSSQL for managing a library database.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="web.jpg" class="card-img-top" alt="Project 3">
+            <div class="card-body">
+              <h5 class="card-title"><b>User Registration form</b></h5>
+              <p class="card-text">Responsive registration form with validation for email, password, and mobile number</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+  <div class="container text-center">
+    <h2 class="section-title">Skills</h2>
+    
+    <!-- Technical Skills -->
+    <div class="col-md-12">
+      <h4 class="mb-4" style="text-decoration:underline #0db9fd;">Technical Skills</h4>
+      <div class="d-flex flex-nowrap overflow-auto gap-5 justify-content-center">
+          <div><img src="https://img.icons8.com/color/48/html-5.png"/><p>HTML</p></div>
+          <div><img src="https://img.icons8.com/color/48/css3.png"/><p>CSS</p></div>
+          <div><img src="https://img.icons8.com/color/48/javascript.png"/><p>JavaScript</p></div>
+          <div><img src="https://img.icons8.com/color/48/bootstrap.png"/><p>Bootstrap</p></div>
+          <div><img src="https://img.icons8.com/color/48/c-sharp-logo.png"/><p>C#</p></div>
+          <div><img src="https://img.icons8.com/ios-filled/50/api-settings.png"/><p>ASP.NET</p></div>
+          <div><img src="https://img.icons8.com/color/48/microsoft-sql-server.png"/><p>SQL Server</p></div>
+          <div><img src="https://img.icons8.com/color/48/visual-studio-code-2019.png"/><p>VS Code</p></div>
+        </div>
+      </div>
+
+  <!-- Personal Skills -->
+  <div class="col-md-12">
+    <h4 class="mb-4" style="text-decoration:underline #0db9fd;">Personal Skills </h4>
+    <div class="d-flex flex-nowrap overflow-auto gap-5 justify-content-center">
+      <div><img src="https://img.icons8.com/ios/50/sorting-arrows-horizontal.png"/><p>Adaptability</p></div>
+      <div><img src="https://img.icons8.com/ios/50/shield.png"/><p>Resilience</p></div>
+      <div><img src="https://img.icons8.com/ios/50/paint-palette.png"/><p>Creativity</p></div>
+      <div><img src="https://img.icons8.com/ios/50/rocket--v1.png"/><p>Ability to Learn & Grow</p></div>
+      <div><img src="https://img.icons8.com/ios/50/speech-bubble--v1.png"/><p>Communication</p></div>
+    </div>  
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!--Activities-->
+
+ <section id="activities">
+  <h2 class="section-title">Activities</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-icon">🚀</div>
+      <div class="timeline-content">
+        <h3>Error by Night Hackathon</h3>
+          <h6>Efficient Diagnosis of Covid-19 Using CT-Scan by Deep Learning</h6>
+        <p>A three-day hackathon organized by IEEE societies at St. Joseph Institute of Technology.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-icon">💡</div>
+      <div class="timeline-content">
+        <h3> Ideathon - Drones to detect Explosives & Materials</h3>
+        <p>Participated in the 'Ideathon' organized by Sairam Robotics Club, focused on Robotics and Drones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certification section -->
+<section id="certifications">
+  <h2 class="section-title">Certifications</h2>
+  <div class="cert-container">
+    <div class="cert-card">
+      <h3>Full Stack .NET Development</h3>
+      <p>Kaashiv Infotech · 2025</p>
+      <span class="badge">.NET</span>
+    </div>
+    <div class="cert-card">
+      <h3>Campus Ambassador Program</h3>
+      <p>CVdragon · 2022</p>
+      <span class="badge">Marketing</span>
+    </div>
+    <div class="cert-card">
+      <h3>Java Training(Beginner) </h3>
+      <p>Besant Technologies · 2022</p>
+      <span class="badge">Java</span>
+    </div>
+  </div>
+</section>
+
+<!-- Personal details -->
+
+<section id="personal-details">
+  <h3>Personal Details</h3>
+  <ul class="personal-list" style="text-align: center;">
+    <li><strong>Date of Birth:</strong> 29/09/2001</li>
+    <li><strong>Nationality  :</strong> Indian</li>
+    <li><strong>Gender       :</strong> Female</li>
+    <li><strong>Languages    :</strong> English, Tamil,Telugu ,hindi</li>
+    <li><strong>Interests    :</strong> Singing ,Throw-Ball ,Mehandi Art</li>
+    <li><strong>Location     :</strong> Chennai, India</li>
+  </ul>
+</section>
+
+<!--Objective-->
+<section id="objective" style="padding:40px 20px; background-color: #e7e7e7;">
+  <div style="max-width: 100%; margin:auto;text-align: center;">
+    <h2 style="font-size: 30px; color: #060607; margin-bottom: 20px;text-decoration: underline rgb(96, 188, 224);">Objective</h2>
+    <p style="font-size: 20px; color: #374151;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      Enthusiastic fresher seeking a Full Stack Developer role to apply my technical skills and grow in a collaborative environment.I’m committed to delivering sincere, goal-oriented results for the organization.
+    </p>
+  </div>
+</section>
+
+
+    <!-- Footer with Contact Info -->
+     <footer id="contact">
+      <div class="container text-center">
+        <h4 class="text-white" style="text-decoration: underline #0db9fd;font-weight: 500;;">Get in Touch</h4><br>
+        <p class="text-white">Feel free to reach out via email, call, or connect on LinkedIn. I'm always open to new opportunities and collaborations.</p><br>
+      <div class="row justify-content-center">
+
+            <div class="col-md-4 mb-4">
+              <a href="mailto:steffigracem29@gmail.com" class="text-decoration-none" style="color: rgb(85, 223, 228);">
+                <div class="d-flex align-items-center justify-content-center">
+                  <img src="https://img.icons8.com/ios-filled/30/0d6efd/new-post.png" alt="Email" class="me-3"/>
+                  <span style="color: #f5f0f0;font-size:17px;"><strong>Email:</strong></span>&nbsp;steffigracem29@gmail.com
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-4 mb-4">
+              <a href="tel:+91-9344352220" class="text-decoration-none" style="color:rgb(85, 223, 228);" >
+                <div class="d-flex align-items-center justify-content-center">
+                  <img src="https://img.icons8.com/ios-filled/30/0d6efd/phone.png" alt="Phone" class="me-3"/>
+                  <span style="color: #f5f0f0;font-size:17px;"><strong>Mobile:</strong></span>&nbsp;+91-9344352220
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-4 mb-4">
+              <a href="https://www.linkedin.com/in/steffi-grace-m-9823a41b0" target="_blank" class="text-decoration-none" style="color: rgb(85, 223, 228);;">
+                <div class="d-flex align-items-center justify-content-center">
+                  <img src="https://img.icons8.com/ios-filled/30/0d6efd/linkedin.png" alt="LinkedIn" class="me-3"/>
+                  <span style="color: #f5f0f0;font-size:17px;"><strong>LinkedIn:</strong></span>&nbsp;View Profile
+                </div>
+              </a>
+            </div>
+          </div>
+        </footer>  
+          <!-- Rights Reserved Section -->
+         <div class="rights-reserved">&copy; 2025 Steffi Grace. All Rights Reserved.</div>
+     
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
